@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque e Produtos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Mel Bijus Logo" id="logo">
+        <h1>Controle de Estoque - Mel Bijus</h1>
+    </header>
+
+    <main>
+        <section id="painel">
+            <h2>Painel de Produtos</h2>
+            <div id="resumo">
+                <p><strong>Venda Total:</strong> R$ <span id="venda-total">0.00</span></p>
+                <p><strong>Custo Total:</strong> R$ <span id="custo-total">0.00</span></p>
+                <p><strong>Gastos com Material:</strong> R$ <span id="total-material">0.00</span></p>
+                <p><strong>Gastos com Frete:</strong> R$ <span id="total-frete">0.00</span></p>
+                <p><strong>Valor da Última Compra:</strong> R$ <span id="total-compra">0.00</span></p>
+                <p><strong>Desconto Ofertado:</strong> R$ <span id="total-desconto">0.00</span></p>
+                <p><strong>Lucro Esperado:</strong> R$ <span id="lucro-esperado">0.00</span></p>
+                <p><strong>Vendas Feitas:</strong> R$ <span id="vendas-feitas">0.00</span></p>
+                <p><strong>Total em Estoque:</strong> <span id="total-estoque">0</span> itens</p>
+            </div>
+            <table id="tabela-produtos">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Quantidade</th>
+                        <th>Custo Final (R$)</th>
+                        <th>Preço de Venda (R$)</th>
+                        <th>Lucro (R$)</th>
+                        <th>% Lucro</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo-tabela">
+                    <!-- Produtos serão inseridos aqui via JS -->
+                </tbody>
+            </table>
+            <button id="btn-adicionar">Adicionar Produto</button>
+        </section>
+
+        <section id="movimentacoes">
+            <h2>Movimentações de Estoque</h2>
+            <table id="tabela-movimentacoes">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Tipo</th>
+                        <th>Quantidade</th>
+                        <th>Data</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo-movimentacoes">
+                    <!-- Movimentações serão inseridas aqui via JS -->
+                </tbody>
+            </table>
+        </section>
+
+        <section id="formulario-mov" style="display: none;">
+            <h2 id="titulo-form-mov">Adicionar Movimentação</h2>
+            <form id="form-mov">
+                <label for="produto-mov">Produto:</label>
+                <select id="produto-mov" required>
+                    <!-- Opções serão preenchidas via JS -->
+                </select>
+
+                <label for="tipo-mov">Tipo:</label>
+                <select id="tipo-mov" required>
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                </select>
+
+                <label for="quantidade-mov">Quantidade:</label>
+                <input type="number" id="quantidade-mov" min="1" required>
+
+                <button type="submit">Salvar</button>
+                <button type="button" id="btn-cancelar-mov">Cancelar</button>
+            </form>
+        </section>
+
+        <section id="formulario" style="display: none;">
+            <h2 id="titulo-form">Adicionar Produto</h2>
+            <form id="form-produto">
+                <label for="nome">Nome do Produto:</label>
+                <input type="text" id="nome" required>
+
+                <label for="valor-compra">Valor da Última Compra (R$):</label>
+                <input type="number" id="valor-compra" step="0.00001" required>
+
+                <label for="desconto">Desconto Ofertado pela Loja (%):</label>
+                <input type="number" id="desconto" step="0.00001" value="0" min="0" max="100" required>
+
+                <label for="gastos-material">Gastos com Material (R$):</label>
+                <input type="number" id="gastos-material" step="0.00001" value="0" required>
+
+                <label for="gastos-frete">Gastos com Frete (R$):</label>
+                <input type="number" id="gastos-frete" step="0.00001" value="0" required>
+
+                <label for="quantidade">Quantidade em Estoque:</label>
+                <input type="number" id="quantidade" min="0" value="0" required>
+
+                <label for="preco-venda">Valor Mínimo para Venda (R$):</label>
+                <input type="number" id="preco-venda" step="0.00001" required>
+
+                <input type="hidden" id="id-produto">
+                <button type="submit">Salvar</button>
+                <button type="button" id="btn-cancelar">Cancelar</button>
+            </form>
+        </section>
+    </main>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
